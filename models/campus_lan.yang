@@ -1,0 +1,56 @@
+module campus-lan {
+  namespace "urn:example:campus-lan";
+  prefix cl;
+
+  organization "Academic Project - Intent-Based Networking";
+  contact "admin@example.com";
+  description
+    "Simple YANG model for a campus LAN defining VLANs and access policies.";
+
+  revision "2025-11-04" {
+    description "Initial revision.";
+  }
+
+  typedef vlan-id {
+    type uint16 {
+      range "1..4094";
+    }
+    description "IEEE 802.1Q VLAN identifier.";
+  }
+
+  typedef access-policy {
+    type enumeration {
+      enum internet_access {
+        description "VLAN is permitted to access the internet.";
+      }
+      enum restricted {
+        description "VLAN is restricted from internet/external access.";
+      }
+    }
+    description "High-level access policy for a VLAN.";
+  }
+
+  container campus-network {
+    description "Campus network configuration container.";
+
+    list vlan {
+      key "id";
+      description "List of VLANs configured in the campus network.";
+
+      leaf id {
+        type vlan-id;
+        description "VLAN ID (1-4094).";
+      }
+
+      leaf name {
+        type string;
+        description "Human-readable VLAN name.";
+      }
+
+      leaf policy {
+        type access-policy;
+        description "Access policy applied to the VLAN.";
+      }
+    }
+  }
+}

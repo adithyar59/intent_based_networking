@@ -1,0 +1,1 @@
+<campus-network xmlns="urn:example:campus-lan"><vlan><id>10</id><name>CS</name><policy>internet_access</policy></vlan><vlan><id>20</id><name>ECE</name><policy>internet_access</policy></vlan><vlan><id>30</id><name>ADMIN</name><policy>restricted</policy></vlan></campus-network>

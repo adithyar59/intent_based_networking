@@ -1,0 +1,13 @@
+{
+  "intent": "Allow CS and ECE VLANs to access the internet, but block ADMIN VLAN from external network.",
+  "vlans": {
+    "CS": 10,
+    "ECE": 20,
+    "ADMIN": 30
+  },
+  "policies": {
+    "CS": "internet_access",
+    "ECE": "internet_access",
+    "ADMIN": "restricted"
+  }
+}

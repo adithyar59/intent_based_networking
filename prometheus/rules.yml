@@ -1,0 +1,13 @@
+# Sample alert rules for network health
+
+groups:
+  - name: network-health
+    rules:
+      - alert: NetworkInterfaceDown
+        expr: node_network_up == 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Network interface is down"
+          description: "The metric node_network_up is 0 for at least 1 minute."
